@@ -16,3 +16,6 @@
 		$_SESSION['error_message'] = "Login Failed: Incorrect Username or Password";
 	}
 	header('Location: ../views/login.php');
+
+
+?>

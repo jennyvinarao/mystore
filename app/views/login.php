@@ -33,7 +33,7 @@ require_once '../partials/template.php';
 				<div class="col-md-6">
 					<form method="POST" action="../controllers/authenticate.php">
 
-						<h2>Login 💁</h2>
+						<h2 class="bg-dark p-3 text-light text-center">Login 💁</h2>
 							<div class="form-group">
 								<label for="username"> Username: </label>
 								<input id="username" type="text" name="username" class="form-control">
