@@ -84,12 +84,15 @@
 									</p>
 								</div>
 									<div class="card-footer">
-									<input type="number" class="form-control mb-2" value="1">
+									<input type="number" class="form-control mb-2" value="1" min="0">
 									<button class="btn btn-block btn-outline-primary add-to-cart" data-id="<?php echo $item['id']; ?>">Add to Cart</button>
 									</div>
 							</div> <!-- end card -->
 						</div> <!-- end item col -->
-					<?php } echo "</div>" ; ?> <!-- end of items row -->		
+					<?php } echo "</div>" ; ?> <!-- end of items row -->	
+					<div class="container py-2 text-right">
+					<a href="./cart.php" class="btn btn-success">Go to Cart</a>	
+					</div>
 			</div> <!-- end items container -->
 		</div> <!-- end items -->
 	</div> <!-- end row -->

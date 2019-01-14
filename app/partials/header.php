@@ -14,8 +14,15 @@
 	        <a class="nav-link <?php if($section == "catalog") {echo " active";} ?>" href="../views/catalog.php?section=catalog">Catalog</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link <?php if($section == "cart") {echo " active";} ?>" href="#">Cart <span class="badge bg-light text-dark" id="cart-count">
-	        0</span></a>
+	        <a class="nav-link <?php if($section == "cart") {echo " active";} ?>" href="../views/cart.php?section=cart">Cart <span class="badge bg-light text-dark" id="cart-count">
+	        		<?php
+							if (isset($_SESSION['cart'])) {
+								echo array_sum($_SESSION['cart']);
+							} else {
+								echo 0;
+							}
+					?>
+	        </span></a>
 	      </li>
 	      <?php if (isset($_SESSION["user"])){?>
 	      <li class="nav-item dropdown">
