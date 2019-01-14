@@ -30,15 +30,15 @@ require_once '../partials/template.php';
 				<div class="col-8">
 					<h5>Shipping Address</h5>
 				<div class="form-group">
-					<input type="text" class="form-control" name="addressLine1" value= "<?php echo $_SESSION['users']['address'];?>">
+					<?php var_dump($_SESSION['users']['address']);?>
+					<input type="text" class="form-control" name="addressLine1" value= "<?php echo $_SESSION['user'];?>">
 				</div>				
 				</div>
 			</div>
+				<h4>Order Summary</h4>
 				<div class="row">
-					<h4>Order Summary</h4>
 						<div class="col-sm-6">
-							<p> Total </p>
-							
+							<p> Total </p>	
 						</div>
 						<div class="col-sm-6" id="total_price">
 							<?php
@@ -58,6 +58,42 @@ require_once '../partials/template.php';
 							?>
 							
 						</div>
+				</div>
+				<hr>
+				<button type="submit" class="btn btn-primary btn-block">Place Order Now</button>
+				<div class="row cart-items mt-4">
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered" id="cart-items">
+							<thead>
+								<tr class="text-center"> 
+									<th colspan="2">Item Name</th>
+									<th>Item Price</th>
+									<th>Item Quantity</th>
+									<th>Item Subtotal</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<?php foreach ($_SESSION['cart'] as $id => $qty){
+									$sql = "SELECT * FROM items WHERE id = $id";
+
+									$result = mysqli_query($conn, $sql);
+									$item = mysqli_fetch_assoc($result);
+								
+								?>
+								<tr>
+								<td colspan="2"><?php echo $item['name'];?></td>
+								<td> <?php echo $item['price'];?></td>
+								<td> <?php echo $qty;?></td>
+								<td> <?php echo $qty * $item['price'];?></td>
+								</tr>
+
+							</tbody>
+							<?php }?>
+						</table>
+						
+					</div>
+					
 				</div>
 
 		</div>
