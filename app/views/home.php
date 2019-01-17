@@ -1,5 +1,6 @@
 <?php 
 	$pageTitle = "My Store";
+	session_start();
 	
 ?>
 

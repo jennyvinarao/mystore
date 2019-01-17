@@ -5,7 +5,7 @@
 <?php 
 
 require_once '../partials/template.php';
-
+global $conn;
 ?>
 
 <?php function get_page_content() { ?>
@@ -135,9 +135,12 @@ require_once '../partials/template.php';
 					$('#username').next().css('color','red');
 					$('#username').next().html('Username is already taken');
 					errorFlag = true;
-				}else {
+				}else if(data != "exists"){
 					$('#username').next().css('color','red');
 					$('#username').next().html('Username is available');
+					errorFlag = false;
+				}else {
+					$('#username').next().html(' ');
 				}
 			});
 

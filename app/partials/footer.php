@@ -1,5 +1,5 @@
 		<footer class="container py-5 border-top">
-	    <p class="float-right"><a href="../views/index.php">Back to top</a></p>
+	    <p class="float-right"><a href="../views/home.php?section=home">Back to top</a></p>
 	    <p>&copy; <?php echo date("Y") ?> <a href="https://tuitt.com" target="_blank"> Tuitt Coding Bootcamp </a></p>
 	  </footer>
 		<!-- End Footer -->

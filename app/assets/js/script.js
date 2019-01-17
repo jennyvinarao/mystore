@@ -1,4 +1,4 @@
-// $(document).ready( ()=> {
+//$(document).ready( ()=> {
 // 	function validate_registration_form() {
 // 	let errors = 0;
 // 		let username = $("#username").val();
@@ -212,6 +212,47 @@
 
 		});
 
+		//update user details
+		$(document).on('click', '#update_info', ()=> {
+			// alert("update");
+		let errorFlag = true;
+		//firstname & lastname field is empty
+		const firstname = $('#firstname').val();
+		const lastname = $('#lastname').val();
+		const email = $('#email').val();
+		const address = $('#address').val();
+
+		
+
+			if (firstname == 0) {
+				$('#firstname').next().css('color','red');
+				$('#firstname').next().html('This field is required');
+				errorFlag = false;
+			}
+			else if (lastname == 0) {
+				$('#lastname').next().css('color','red');
+				$('#lastname').next().html('This field is required');
+				errorFlag = false;
+			}
+			else if (!email.includes("@")) {
+				$('#email').next().css('color','red');
+				$('#email').next().html('Valid email required');
+				errorFlag = false;
+			}
+
+			else if (address == 0) {
+				$('#address').next().css('color','red');
+				$('#address').next().html('This field is required');
+				errorFlag = false;
+			}
+			else {
+			$('#username').next().html('UPDATE SUCCESSFULLY SAVED!');
+			$('#update_user_details').submit();
+			window.location.replace('../views/profile.php?section=prof');
+
+		}
+
+		});
 		
 
 
@@ -220,5 +261,3 @@
 
 
 
-
-// });

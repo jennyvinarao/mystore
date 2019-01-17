@@ -16,10 +16,15 @@ require_once '../partials/template.php';
 
 <div class="container py-5">
 	<section class="row justify-content-center">
-		<?php if (isset($_SESSION["user"])){?>
+		<?php if ((isset($_SESSION["user"])) && ($_SESSION['user_i']['roles_id'] == 2)) { ?>
 			<div class="col">
-				<h1> Welcome <?php echo $_SESSION["user"];?>! 🚀 </h1>
+				<h1> Welcome <?php echo $_SESSION["user_i"]['firstname'];?>! 🚀 </h1>
 				<p>Start your first purchase now! <a href="./catalog.php">ORDER NOW!</a> </p>
+				
+			</div>
+		<?php } elseif ((isset($_SESSION["user"])) && ($_SESSION['user_i']['roles_id'] == 1)) { ?>
+			<div class="col">
+				<h1> Welcome Admin <?php echo $_SESSION["user_i"]['firstname'];?>! 🚀 </h1>
 				
 			</div>
 			<?php } elseif (isset($_SESSION["error_message"])){?>

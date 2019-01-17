@@ -1,20 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-  	<a class="navbar-brand" href="../../index.php">MYSTORE</a>
+  	<a class="navbar-brand" href="../views/home.php">MYSTORE</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sandbox-navbar" aria-controls="sandbox-navbar" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 
 	  <div class="collapse navbar-collapse" id="sandbox-navbar">
 	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item">
-	        <a class="nav-link <?php if($section == "home") {echo " active";} ?>" href="../views/home.php?section=home">Home</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link <?php if($section == "catalog") {echo " active";} ?>" href="../views/catalog.php?section=catalog">Catalog</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link <?php if($section == "cart") {echo " active";} ?>" href="../views/cart.php?section=cart">Cart <span class="badge bg-light text-dark" id="cart-count">
+	   	<?php if (!isset($_SESSION['user']) or ($_SESSION['user_i']['roles_id'] == 2)) { ?>
+	     	<li class="nav-item">
+	        	<a class="nav-link <?php if($section == "home") {echo " active";} ?>" href="../views/home.php?section=home">Home</a>
+	     	</li>
+	     	<li class="nav-item">
+	        	<a class="nav-link <?php if($section == "catalog") {echo " active";} ?>" href="../views/catalog.php?section=catalog">Catalog</a>
+	     	</li>
+	     	<li class="nav-item">
+	        	<a class="nav-link <?php if($section == "cart") {echo " active";} ?>" href="../views/cart.php?section=cart">	Cart <span class="badge bg-light text-dark" id="cart-count">
 	        		<?php
 							if (isset($_SESSION['cart'])) {
 								echo array_sum($_SESSION['cart']);
@@ -23,12 +24,26 @@
 							}
 					?>
 	        </span></a>
-	      </li>
+	     </li>
+	     <?php } else if ((isset($_SESSION["user"])) && ($_SESSION['user_i']['roles_id'] == 1)) { ?>
+		      	<li class="nav-item">
+		        <a class="nav-link <?php if($section == "items") {echo " active";} ?>" href="../views/items.php?section=items">Items</a>
+		      	</li>
+		      	<li class="nav-item">
+		        <a class="nav-link <?php if($section == "users") {echo " active";} ?>" href="../views/users.php?section=users">Users</a>
+		      	</li>
+	  	<?php } ?>
+
 	      <?php if (isset($_SESSION["user"])){?>
 	      <li class="nav-item dropdown">
-	      	<a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"> Hi <?php echo $_SESSION["user"];?>!</a>
+	      	<a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"> Hi <?php echo $_SESSION["user_i"]['firstname'];?>!</a>
 	      	<div class="dropdown-menu">
-	      		<a href="../controllers/logout.php" class="dropdown-item"> Logout</a>
+	      		<?php if (isset($_SESSION['user']) && ($_SESSION['user_i']['roles_id'] == 1)) { ?>
+	      			<a href="../controllers/logout.php" class="dropdown-item"> Logout</a>
+	      		<?php } else if ((isset($_SESSION["user"])) && ($_SESSION['user_i']['roles_id'] == 2)) { ?>
+	      			<a href="../views/profile.php?section=profile" class="dropdown-item"> Profile</a>
+	      			<a href="../controllers/logout.php" class="dropdown-item"> Logout</a>
+	      		<?php } ?>
 	      	</div>
 	      </li>	
 	      <?php } else{?>
