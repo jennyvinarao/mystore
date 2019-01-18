@@ -183,6 +183,7 @@ if($payment_mode_id == 1) {
         ->setCancelUrl('https://caps2mystore.herokuapp.com/app/controllers/pay.php?success=false');
 
         //http://localhost/batch19/mystore
+        //https://caps2mystore.herokuapp.com
     $payment = new Payment();
     $payment->setIntent('sale')
         ->setPayer($payer)

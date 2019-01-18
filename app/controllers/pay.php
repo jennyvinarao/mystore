@@ -6,7 +6,7 @@ use PayPal\Api\PaymentExecution;
 global $conn;
 
 
-require_once "paypal/start.php";
+require_once "./paypal/start.php";
 require_once "./connect.php";
 
 if(!isset($_GET['success'], $_GET['paymentId'], $_GET['PayerID'])){

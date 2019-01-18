@@ -20,22 +20,23 @@
 		
 	// 	//$_SESSION['error_message'] = "Login Failed: Incorrect Username or Password";
 
-	// } elseif(!password_verify($password, $user_info['password']) == true) {
-	// 	// die("login_failed");
-	// 	$_SESSION['error_message'] = "Login Failed: Incorrect Username or Password";
-	// } else {
-	// 	$_SESSION['user_i'] = $user_info;
-	// 	$_SESSION['user'] = $username;
-	// }
+	// } else
+	if(!password_verify($password, $user_info['password']) == true) {
+		// die("login_failed");
+		$_SESSION['error_message'] = "Login Failed: Incorrect Username or Password";
+	} else {
+		$_SESSION['user_i'] = $user_info;
+		$_SESSION['user'] = $username;
+	}
 
 	// // AND password = '$password' 
 
-	if(mysqli_num_rows($result) > 0){
-		$_SESSION['user_i'] = $user_info;
-		$_SESSION['user'] = $username;
-	} else {
-		$_SESSION['error_message'] = "Login Failed: Incorrect Username or Password";
-	}
+	// if(mysqli_num_rows($result) > 0){
+	// 	$_SESSION['user_i'] = $user_info;
+	// 	$_SESSION['user'] = $username;
+	// } else {
+	// 	$_SESSION['error_message'] = "Login Failed: Incorrect Username or Password";
+	// }
 	header('Location: ../views/login.php');
 
 
