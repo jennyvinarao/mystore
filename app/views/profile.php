@@ -53,7 +53,7 @@ global $conn;
 					</div>
 					<div class="tab-pane" id="history" role="tabpanel">
 						<div class="row">
-							<div class="col-md-8">
+							<div class="col-md-10">
 								<h3>Order History</h3>
 							</div>
 						</div>

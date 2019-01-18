@@ -1,5 +1,5 @@
 <?php 
-	$pageTitle = "Catalog";
+	$pageTitle = "Checkout";
 	session_start();
 	
 ?>
@@ -22,7 +22,7 @@ require_once '../partials/template.php';
 
 		?>
 		<div class="container m-3">
-			<h1 class="text-center"> Hello! Welcome to your checkout page!</h1>
+			<h1 class="text-center"> Checkout Page</h1>
 
 			<form method="POST" action="../controllers/placeorder.php">
 				<div class="container mt-4">
@@ -30,10 +30,26 @@ require_once '../partials/template.php';
 						<div class="col-8 form-group row">
 							<h5 class="col-form-label">Shipping Address:</h5>
 						<div class="form-group ml-3">
-							<input type="text" class="form-control " name="addressLine1" value= "<?php echo $_SESSION['user_i']['address'];?>">
+							<input type="text" class="form-control" name="addressLine1" value= "<?php echo $_SESSION['user_i']['address'];?>">
 						</div>				
 						</div>
+						<div class="col-8 form-group row">
+				 			<h4 class="col-form-label">Payment Methods</h4>
+				 			<div class="form-group ml-3">
+				 				<select name="payment_mode" id="payment_mode" class="form-control">
+				 					<?php 
+				 					$payment_mode_query = "SELECT * FROM payment_modes";
+				 					$payment_modes = mysqli_query($conn, $payment_mode_query);
+				 					foreach ($payment_modes as $payment_mode) {
+				 						extract($payment_mode);
+				 						echo "<option value='$id'>$name</option>";
+				 					}
+				 					 ?>
+				 				</select>
+				 				</div>
+		 				</div> <!-- payment methods -->
 					</div>	
+
 						<h4 class="text-center">Order Summary</h4>
 						<div class="row">
 								<div class="col-sm-6">

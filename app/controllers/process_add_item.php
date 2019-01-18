@@ -14,6 +14,6 @@ var_dump($_FILES['image']['tmp_name']);
 $sql = "INSERT INTO items (name, description, price, img_path, category_id) VALUES ('$name', '$description', $price, '$image', '$category_id')";
 $result = mysqli_query($conn, $sql);
 
-header('Location: ../views/catalog.php');
+header('Location: ../views/items.php');
 
  ?>
