@@ -78,7 +78,7 @@ require_once '../partials/template.php';
 										<td colspan="2"><?php echo $item['name'];?></td>
 										<td> <?php echo $item['price'];?></td>
 										<td> <?php echo $qty;?></td>
-										<td> <?php echo $qty * $item['price'];?></td>
+										<td> <?php echo number_format(($qty * $item['price']),2);?></td>
 										</tr>
 
 									</tbody>

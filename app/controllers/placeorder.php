@@ -171,8 +171,12 @@ if($payment_mode_id == 1) {
 
     $redirectUrls = new RedirectUrls();
     $redirectUrls
-        ->setReturnUrl('https://caps2mystore.herokuapp.com/app/controllers/pay.php?success=true')
-        ->setCancelUrl('https://caps2mystore.herokuapp.com/app/controllers/pay.php?success=false');
+        // ->setReturnUrl('https://caps2mystore.herokuapp.com/app/controllers/pay.php?success=true')
+        // ->setCancelUrl('https://caps2mystore.herokuapp.com/app/controllers/pay.php?success=false');
+
+             
+        ->setReturnUrl('http://localhost/batch19/mystore/app/controllers/pay.php?success=true')
+        ->setCancelUrl('http://localhost/batch19/mystore/app/controllers/pay.php?success=false');
 
         //http://localhost/batch19/mystore
         //https://caps2mystore.herokuapp.com

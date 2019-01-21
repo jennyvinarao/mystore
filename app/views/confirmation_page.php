@@ -19,6 +19,7 @@ function get_page_content(){
                     <h3>Total Bill: Php <?php echo $_SESSION['total_price'];?></h3>
                     <?php unset($_SESSION['new_txn_number']);
                         unset($_SESSION['cart']);
+                        unset($_SESSION['address']);
                      ?>
 
 
