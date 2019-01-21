@@ -1,5 +1,10 @@
 <?php
 
+// $host ="localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "ecom_db";
+
 $host ="db4free.net";
 $username = "jenvinarao";
 $password = "ak0jenny1612";

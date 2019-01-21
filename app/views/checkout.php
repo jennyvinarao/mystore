@@ -68,9 +68,10 @@ require_once '../partials/template.php';
 
 											$cart_total += $subTotal;
 										}
-										echo $cart_total;
-
 									?>
+									<input type="number" class="form-control" name="total_price" value= "<?php echo number_format($cart_total,2);?>" readonly>
+										
+
 									
 								</div>
 						</div>

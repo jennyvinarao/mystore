@@ -40,7 +40,7 @@ $status_id = 1;
 $payment_mode_id = 2;
 $address = $_SESSION['address'];
 
-$new_order_query = "INSERT INTO orders(user_id, transaction_code, purchase_date, status_id, payment_mode_id) VALUES ('$user_id', '$trans_code', '$purchase_date', '$status_id', '$payment_mode_id');";
+$new_order_query = "INSERT INTO orders(user_id, transaction_code, purchase_date,total, status_id, payment_mode_id) VALUES ('$user_id', '$trans_code', '$purchase_date','$total', '$status_id', '$payment_mode_id');";
 $new_order = mysqli_query($conn, $new_order_query);
 $new_order_id = mysqli_insert_id($conn);
 

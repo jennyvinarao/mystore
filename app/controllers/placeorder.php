@@ -43,15 +43,6 @@ function generate_new_transaction_number()
 	$today = getdate();
 	return $ref_number.'-'.$today[0]; //seconds since Unix Epoch
 }
-	
-
-
-		// $sql = "SELECT SUM(price) FROM orders GROUP BY order_id";
-
-		// $result = mysqli_query($conn,$sql);
-		
-
-
 
 	//get all the details of the order
 	$user_id = $_SESSION['user_i']['id'];
@@ -59,17 +50,17 @@ function generate_new_transaction_number()
 	$status_id = 1;
 	$payment_mode_id = $_POST['payment_mode'];
 	$address = $_POST['addressLine1'];
+	$total = number_format($_POST['total_price'],2);
 
+	var_dump($total);
 if($payment_mode_id == 1) {
 
 		$transaction_number = generate_new_transaction_number();
 
 		//create a new order
-		$sql = "INSERT INTO orders(user_id, transaction_code, purchase_date, status_id, payment_mode_id) VALUES ('$user_id', '$transaction_number', '$purchase_date', '$status_id', '$payment_mode_id'); ";
-
+		$sql = "INSERT INTO orders(user_id, transaction_code, purchase_date,total, status_id, payment_mode_id) VALUES ('$user_id', '$transaction_number', '$purchase_date','$total', '$status_id', '$payment_mode_id'); ";
 
 		$result = mysqli_query($conn, $sql);
-		// var_dump($conn);
 
 		//get the latest order ID to associate items for orders_items table
 		$new_order_id = mysqli_insert_id($conn);
@@ -133,6 +124,7 @@ if($payment_mode_id == 1) {
 
 		    // Route user to confirmation page
 		    $_SESSION['new_txn_number'] = $transaction_number;
+		    $_SESSION['total_price'] = $total;
 		    header('location: ../views/confirmation_page.php?section=confirmation');
 
 		    $mail->send();

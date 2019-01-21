@@ -17,6 +17,7 @@ function get_page_content(){
 
                     <h3>Reference No.: <?php echo $_SESSION['new_txn_number']; ?></h3>
                     <?php unset($_SESSION['new_txn_number']); ?>
+                    <h3>Total Bill: Php <?php echo $_SESSION['total_price'];?></h3>
 
                     <p>Thank you for shopping! Your order is being processed.</p>
 
