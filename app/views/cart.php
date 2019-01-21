@@ -1,5 +1,5 @@
 <?php 
-	$pageTitle = "Catalog";
+	$pageTitle = "Cart";
 	session_start();
 	
 ?>
@@ -48,7 +48,7 @@ require_once '../partials/template.php';
 								<td class="item_name"> <?php echo $item['name'] ?></td>
 								<td class="item_price"> <?php echo $item['price'] ?></td>
 								<td class="item_quantity"> <input type="number" class="form-control" value="<?php echo $qty ?>" data-id = "<?php echo $id; ?>" min='1'></td>
-								<td class="item_subtotal"> <?php echo $subTotal ;?></td>
+								<td class="item_subtotal"> <?php echo number_format($subTotal,2) ;?></td>
 								<td class="item-action text-center">
 									<button class="btn btn-danger item_remove" data-id = "<?php echo $id; ?>">Remove from cart</button>
 								</td>
@@ -58,7 +58,7 @@ require_once '../partials/template.php';
 					<tfoot>
 						<tr>
 							<td class="text-right font-weight-bold" colspan="4"> Total</td>
-							<td class="text-right font-weight-bold" id="total_price"> <?php echo $cart_total?></td>
+							<td class="text-right font-weight-bold" id="total_price"> <?php echo number_format($cart_total,2)?></td>
 						</tr>
 						<tr>
 							<td class="text-right" colspan="6">

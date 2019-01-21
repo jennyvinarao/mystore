@@ -22,7 +22,7 @@ require_once '../partials/template.php';
 
 		?>
 		<div class="container m-3">
-			<h1 class="text-center"> Checkout Page</h1>
+			<h3 class="text-center"> Checkout Page</h3>
 
 			<form method="POST" action="../controllers/placeorder.php">
 				<div class="container mt-4">
@@ -50,33 +50,10 @@ require_once '../partials/template.php';
 		 				</div> <!-- payment methods -->
 					</div>	
 
-						<h4 class="text-center">Order Summary</h4>
-						<div class="row">
-								<div class="col-sm-6">
-									<p> Total </p>	
-								</div>
-								<div class="col-sm-6" id="total_price">
-									<?php
-										$cart_total = 0;
-									
-										foreach ($_SESSION['cart'] as $id => $qty) {
-											$sql = "SELECT * FROM items WHERE id = $id";
-											$result = mysqli_query($conn, $sql);
-											$item = mysqli_fetch_assoc($result);
-
-											$subTotal = $_SESSION['cart'][$id] * $item['price'];
-
-											$cart_total += $subTotal;
-										}
-									?>
-									<input type="number" class="form-control" name="total_price" value= "<?php echo number_format($cart_total,2);?>" readonly>
-										
-
-									
-								</div>
-						</div>
+						<h4 class="text-center"><b>Order Summary</b></h4>
 						<hr>
-						<button type="submit" class="btn btn-primary btn-block" >Place Order Now</button>
+						<hr>
+						
 						<div class="row cart-items mt-4">
 							<div class="table-responsive">
 								<table class="table table-striped table-bordered" id="cart-items">
@@ -111,6 +88,28 @@ require_once '../partials/template.php';
 							</div>
 							
 						</div>
+						<div class="row">	
+								<div class="col-sm-6">
+									<p class="text-right"><b>Total Bill:</b></p>	
+								</div>
+								<div class="col-sm-6 mb-2" id="total_price">
+									<?php
+										$cart_total = 0;
+									
+										foreach ($_SESSION['cart'] as $id => $qty) {
+											$sql = "SELECT * FROM items WHERE id = $id";
+											$result = mysqli_query($conn, $sql);
+											$item = mysqli_fetch_assoc($result);
+
+											$subTotal = $_SESSION['cart'][$id] * $item['price'];
+
+											$cart_total += $subTotal;
+										}
+									?>
+									<input type="number" class="form-control" name="total_price" value= "<?php echo number_format($cart_total,2);?>" readonly>	
+								</div>
+						</div>
+						<button type="submit" class="btn btn-primary btn-block">Place Order Now</button>
 
 				</div>
 				
