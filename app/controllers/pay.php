@@ -55,7 +55,6 @@ if($new_order){
 	}
 }
 
-unset($_SESSION['cart']);
 unset($_SESSION['address']);
 header('Location: ../views/confirmation_page.php');
 mysqli_close($conn);
